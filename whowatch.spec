@@ -7,6 +7,7 @@ Group:		Monitoring
 URL:		http://wizard.ae.krakow.pl/~mike/
 Source0:	http://wizard.ae.krakow.pl/~mike/download/%{name}-%{version}.tar.gz
 Patch0:		%{name}-%{version}.patch
+Patch1:		whowatch-1.4-destdir-support.patch
 
 BuildRequires:	ncurses-devel
 
@@ -22,15 +23,14 @@ INT or KILL signal to selected process.
 %prep
 %setup -q
 %patch0 -p0
+%patch1 -p1 -b .destdir~
 
 %build
 %configure
 %make
 
 %install
-%{__install} -d -m0755 %{buildroot}%{_mandir}/man1/ \
-			%{buildroot}%{_bindir}
-%makeinstall
+%makeinstall_std
 
 %files
 %doc AUTHORS ChangeLog KEYS README TODO
