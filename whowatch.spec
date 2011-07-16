@@ -25,7 +25,7 @@ INT or KILL signal to selected process.
 
 %build
 %configure
-%make %{?_smp_mflags}
+%make
 
 %install
 %{__install} -d -m0755 %{buildroot}%{_mandir}/man1/ \
