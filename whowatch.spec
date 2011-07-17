@@ -28,10 +28,7 @@ INT or KILL signal to selected process.
 %make
 
 %install
-# make install does not work. Complains on None-existing target
-# "install-recursive", which does not exist.
-install -D -m0755 src/%{name} %{buildroot}%{_bindir}/%{name}
-install -D -m0755 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1*
+%makeinstall_std -C src
 
 %files
 %doc AUTHORS ChangeLog README PLUGINS.readme TODO
