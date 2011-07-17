@@ -1,13 +1,12 @@
 Summary:	Display information about users currently logged on 
 Name:		whowatch
-Version:	1.4
+Version:	1.8.3
 Release:	1
 License:	GPLv2
 Group:		Monitoring
 URL:		http://wizard.ae.krakow.pl/~mike/
 Source0:	http://wizard.ae.krakow.pl/~mike/download/%{name}-%{version}.tar.gz
-Patch0:		%{name}-%{version}.patch
-Patch1:		whowatch-1.4-destdir-support.patch
+Patch0:		whowatch-1.8.3-destdir-support.patch
 
 BuildRequires:	ncurses-devel
 
@@ -22,17 +21,19 @@ INT or KILL signal to selected process.
 
 %prep
 %setup -q
-%patch0 -p0
-%patch1 -p1 -b .destdir~
+%patch0 -p1 -b .destdir~
 
 %build
 %configure
 %make
 
 %install
-%makeinstall_std
+# make install does not work. Complains on None-existing target
+# "install-recursive", which does not exist.
+install -D -m0755 src/%{name} %{buildroot}%{_bindir}/%{name}
+install -D -m0755 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1*
 
 %files
-%doc AUTHORS ChangeLog KEYS README TODO
+%doc AUTHORS ChangeLog README PLUGINS.readme TODO
 %{_mandir}/man1/%{name}.1*
 %{_bindir}/%{name}
