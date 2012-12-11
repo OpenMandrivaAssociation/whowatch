@@ -34,3 +34,24 @@ INT or KILL signal to selected process.
 %doc AUTHORS ChangeLog README PLUGINS.readme TODO
 %{_mandir}/man1/%{name}.1*
 %{_bindir}/%{name}
+
+
+%changelog
+* Sun Jul 17 2011 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.8.3-1
++ Revision: 690208
+- make DESTDIR mostly work again..
+
+  + Johnny A. Solbu <solbu@mandriva.org>
+    - New version
+    - Updated patch
+    - spec file fix: "make install" have been broken since 1.6.0
+
+* Sun Jul 17 2011 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.4-1
++ Revision: 690145
+- add support for DESTDIR in Makefile (P1)
+- %make is sufficient ;)
+
+  + Johnny A. Solbu <solbu@mandriva.org>
+    - Initial Mandriva release
+    - import whowatch
+
