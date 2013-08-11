@@ -1,12 +1,11 @@
 Summary:	Display information about users currently logged on 
 Name:		whowatch
-Version:	1.8.3
+Version:	1.8.4
 Release:	1
 License:	GPLv2
 Group:		Monitoring
 URL:		http://wizard.ae.krakow.pl/~mike/
 Source0:	http://wizard.ae.krakow.pl/~mike/download/%{name}-%{version}.tar.gz
-Patch0:		whowatch-1.8.3-destdir-support.patch
 
 BuildRequires:	ncurses-devel
 
@@ -21,7 +20,6 @@ INT or KILL signal to selected process.
 
 %prep
 %setup -q
-%patch0 -p1 -b .destdir~
 
 %build
 %configure
@@ -29,6 +27,8 @@ INT or KILL signal to selected process.
 
 %install
 %makeinstall_std -C src
+mkdir -p %{buildroot}/%{_mandir}/man1/
+install -m 0644 %{name}.1 %{buildroot}/%{_mandir}/man1/
 
 %files
 %doc AUTHORS ChangeLog README PLUGINS.readme TODO
