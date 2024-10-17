@@ -4,7 +4,7 @@ Version:	1.8.5
 Release:	2
 License:	GPLv2
 Group:		Monitoring
-URL:		http://wizard.ae.krakow.pl/~mike/
+URL:		https://wizard.ae.krakow.pl/~mike/
 Source0:	http://wizard.ae.krakow.pl/~mike/download/%{name}-%{version}.tar.gz
 
 BuildRequires:	ncurses-devel
